@@ -1,0 +1,20 @@
+{
+  "name": "xenan1/sitemap-generator",
+  "description": "Sitemap generator",
+  "type": "library",
+  "require": {
+    "php": "^8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Xenan\\SitemapGenerator\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Xenan",
+      "email": "kovalenkokd1209@gmail.com"
+    }
+  ],
+  "license": "MIT"
+}
