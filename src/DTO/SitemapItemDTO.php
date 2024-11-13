@@ -7,7 +7,7 @@ readonly class SitemapItemDTO
     public function __construct(
         public string $loc,
         public string $lastmod,
-        public float $priority,
+        public string $priority,
         public string $changefreq
     ) {}
 
@@ -23,6 +23,7 @@ readonly class SitemapItemDTO
 
     public static function fromPage(array $page): self
     {
-        return new self($page['loc'], $page['lastmod'], $page['priority'], $page['changefreq']);
+        $priority = round($page['priority'], 1);
+        return new self($page['loc'], $page['lastmod'], $priority, $page['changefreq']);
     }
 }

@@ -7,16 +7,16 @@ use Xenan\Sitemap\DTO\SitemapItemDTO;
 abstract class AbstractFileGenerator
 {
     private string $destinationPath;
-    /**
-     * @param array<SitemapItemDTO> $pages
-     * @param string $destinationPath
-     * @return void
-     */
 
     abstract protected function prepare(): void;
     abstract protected function addSitemapItem(SitemapItemDTO $item): void;
     abstract protected function saveFile(): void;
 
+    /**
+     * @param array<SitemapItemDTO> $pages
+     * @param string $destinationPath
+     * @return void
+     */
     public function run(array $pages, string $destinationPath): void
     {
         $this->destinationPath = $destinationPath;

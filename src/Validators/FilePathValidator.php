@@ -13,7 +13,8 @@ class FilePathValidator
     public function __construct(private string $path) {}
 
     /**
-     * @throws ValueError
+     * @throws PathPermissionsException
+     * @throws WrongExtensionException
      */
     public static function validateForFileWriting(string $path, FileType $expectedFileType): void
     {
@@ -29,6 +30,9 @@ class FilePathValidator
         }
     }
 
+    /**
+     * @throws PathStringException
+     */
     public static function validatePathString($path): void
     {
         if (!preg_match('/^[^*?"<>|:]*$/', $path)) {
