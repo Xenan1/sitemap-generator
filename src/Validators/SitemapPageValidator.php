@@ -4,6 +4,8 @@ namespace Xenan\Sitemap\Validators;
 
 use DateTime;
 use ValueError;
+use Xenan\Sitemap\Exceptions\InvalidSitemapValueException;
+use Xenan\Sitemap\Exceptions\MissingSitemapFieldException;
 
 class SitemapPageValidator
 {
@@ -29,8 +31,8 @@ class SitemapPageValidator
         foreach (['loc', 'lastmod', 'priority', 'changefreq'] as $field) {
             if (!array_key_exists($field, $this->page)) {
                 $field === 'loc'
-                    ? throw new ValueError('Missing loc field')
-                    : throw new ValueError('Missing required field '. $field.' in page '. $this->page['loc']);
+                    ? throw new MissingSitemapFieldException('Missing loc field')
+                    : throw new MissingSitemapFieldException('Missing required field '. $field.' in page '. $this->page['loc']);
             }
         }
     }
@@ -38,7 +40,7 @@ class SitemapPageValidator
     private function validateLoc(): void
     {
         if (filter_var($this->page['loc'], FILTER_VALIDATE_URL) === false) {
-            throw new ValueError('Invalid URL for loc in page ' . $this->page['loc']);
+            throw new InvalidSitemapValueException('Invalid URL for loc in page ' . $this->page['loc']);
         }
     }
 
@@ -51,7 +53,7 @@ class SitemapPageValidator
         $isValidLastmod = $isValidFormat && $date <= new DateTime();
 
         if (!$isValidLastmod) {
-            throw new ValueError('Invalid lastmod format or date in page '. $this->page['loc']);
+            throw new InvalidSitemapValueException('Invalid lastmod format or date in page '. $this->page['loc']);
         }
     }
 
@@ -60,7 +62,7 @@ class SitemapPageValidator
         $priority = round((float) $this->page['priority'], 1);
 
         if ($priority < 0 || $priority > 1) {
-            throw new ValueError('Invalid priority value in page '. $this->page['loc']);
+            throw new InvalidSitemapValueException('Invalid priority value in page '. $this->page['loc']);
         }
     }
 
@@ -69,7 +71,7 @@ class SitemapPageValidator
         $validFrequencies = ['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'];
 
         if (!in_array($this->page['changefreq'], $validFrequencies)) {
-            throw new ValueError('Invalid changefreq value in page '. $this->page['loc']);
+            throw new InvalidSitemapValueException('Invalid changefreq value in page '. $this->page['loc']);
         }
     }
 }

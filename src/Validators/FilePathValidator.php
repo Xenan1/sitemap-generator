@@ -4,6 +4,9 @@ namespace Xenan\Sitemap\Validators;
 
 use Xenan\Sitemap\Enums\FileType;
 use ValueError;
+use Xenan\Sitemap\Exceptions\PathPermissionsException;
+use Xenan\Sitemap\Exceptions\PathStringException;
+use Xenan\Sitemap\Exceptions\WrongExtensionException;
 
 class FilePathValidator
 {
@@ -22,14 +25,14 @@ class FilePathValidator
     private function validateWritingPermissions(): void
     {
         if (!is_writable(dirname($this->path))) {
-            throw new ValueError("Destination path $this->path is not writable");
+            throw new PathPermissionsException("Destination path $this->path is not writable");
         }
     }
 
     public static function validatePathString($path): void
     {
         if (!preg_match('/^[^*?"<>|:]*$/', $path)) {
-            throw new ValueError('Invalid file path');
+            throw new PathStringException('Invalid file path');
         }
     }
 
@@ -40,7 +43,7 @@ class FilePathValidator
 
         $expectedExtension = $expectedFileType->extension();
         if ($expectedExtension !== $extension) {
-            throw new ValueError("Unexpected file extension. Expected $expectedExtension, $extension given");
+            throw new WrongExtensionException("Unexpected file extension. Expected $expectedExtension, $extension given");
         }
     }
 }
