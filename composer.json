@@ -7,7 +7,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Xenan\\SitemapGenerator\\": "src/"
+      "Xenan\\Sitemap\\": "src/"
     }
   },
   "authors": [
