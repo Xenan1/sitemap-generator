@@ -34,7 +34,7 @@ class SitemapGenerator
         FilePathValidator::validatePathString($this->destinationPath);
 
         if (!is_dir($this->destinationPath)) {
-            mkdir($this->destinationPath, 0755, true);
+            mkdir(dirname($this->destinationPath), 0755, true);
         }
 
         FilePathValidator::validateForFileWriting($this->destinationPath, $this->fileType);
