@@ -22,7 +22,7 @@ class FilePathValidator
     private function validateWritingPermissions(): void
     {
         if (!is_writable($this->path)) {
-            throw new ValueError('Destination path is not writable');
+            throw new ValueError("Destination path $this->path is not writable");
         }
     }
 
