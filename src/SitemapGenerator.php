@@ -10,16 +10,10 @@ use Xenan\Sitemap\Validators\SitemapPageValidator;
 class SitemapGenerator
 {
     private function __construct(
-        /**
-         * @var
-         */
         private array $pages,
         private FileType $fileType,
         private string $destinationPath
-    )
-    {
-        $this->validateDestination();
-    }
+    ) {}
 
     public static function run(array $pages, FileType $fileType, string $destinationPath): void
     {
