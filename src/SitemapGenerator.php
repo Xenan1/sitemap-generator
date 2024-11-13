@@ -1,5 +1,6 @@
 <?php
 
+use DTO\SitemapItemDTO;
 use Enums\FileType;
 use Validators\FilePathValidator;
 use Validators\SitemapPageValidator;
@@ -23,6 +24,7 @@ class SitemapGenerator
         $generator = new self($pages, $fileType, $destinationPath);
         $generator->validateDestination();
         $generator->validatePages();
+        $generator->generate();
     }
 
     private function validateDestination(): void
@@ -41,5 +43,11 @@ class SitemapGenerator
         foreach ($this->pages as $page) {
             SitemapPageValidator::validate($page);
         }
+    }
+
+    private function generate(): void
+    {
+        $pages = SitemapItemDTO::fromPages($this->pages);
+        $this->fileType->generator()->run($pages, $this->destinationPath);
     }
 }
