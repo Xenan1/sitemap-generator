@@ -25,6 +25,10 @@ class XmlGenerator extends AbstractFileGenerator
 
     protected function saveFile(): void
     {
-        $this->xml->asXML($this->getDestinationPath());
+        $filePath = $this->getDestinationPath();
+        $this->xml->asXML($filePath);
+
+        $contents = rtrim(file_get_contents($filePath));
+        file_put_contents($filePath, $contents);
     }
 }
