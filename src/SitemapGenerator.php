@@ -1,5 +1,7 @@
 <?php
 
+namespace Xenan\Sitemap;
+
 use DTO\SitemapItemDTO;
 use Enums\FileType;
 use Validators\FilePathValidator;
