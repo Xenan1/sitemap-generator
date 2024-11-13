@@ -1,11 +1,11 @@
 <?php
 
-namespace Enums;
+namespace Xenan\Sitemap\Enums;
 
-use FileGenerators\AbstractFileGenerator;
-use FileGenerators\CsvGenerator;
-use FileGenerators\JsonGenerator;
-use FileGenerators\XmlGenerator;
+use Xenan\Sitemap\FileGenerators\AbstractFileGenerator;
+use Xenan\Sitemap\FileGenerators\CsvGenerator;
+use Xenan\Sitemap\FileGenerators\JsonGenerator;
+use Xenan\Sitemap\FileGenerators\XmlGenerator;
 
 enum FileType
 {

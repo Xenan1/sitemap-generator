@@ -2,10 +2,10 @@
 
 namespace Xenan\Sitemap;
 
-use DTO\SitemapItemDTO;
-use Enums\FileType;
-use Validators\FilePathValidator;
-use Validators\SitemapPageValidator;
+use Xenan\Sitemap\DTO\SitemapItemDTO;
+use Xenan\Sitemap\Enums\FileType;
+use Xenan\Sitemap\Validators\FilePathValidator;
+use Xenan\Sitemap\Validators\SitemapPageValidator;
 
 class SitemapGenerator
 {

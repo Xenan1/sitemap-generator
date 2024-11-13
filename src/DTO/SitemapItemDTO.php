@@ -1,6 +1,6 @@
 <?php
 
-namespace DTO;
+namespace Xenan\Sitemap\DTO;
 
 readonly class SitemapItemDTO
 {

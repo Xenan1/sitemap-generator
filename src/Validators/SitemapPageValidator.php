@@ -1,6 +1,6 @@
 <?php
 
-namespace Validators;
+namespace Xenan\Sitemap\Validators;
 
 use DateTime;
 use ValueError;

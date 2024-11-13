@@ -1,8 +1,8 @@
 <?php
 
-namespace Validators;
+namespace Xenan\Sitemap\Validators;
 
-use Enums\FileType;
+use Xenan\Sitemap\Enums\FileType;
 use ValueError;
 
 class FilePathValidator

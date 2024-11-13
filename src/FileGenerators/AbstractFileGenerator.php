@@ -1,8 +1,8 @@
 <?php
 
-namespace FileGenerators;
+namespace Xenan\Sitemap\FileGenerators;
 
-use DTO\SitemapItemDTO;
+use Xenan\Sitemap\DTO\SitemapItemDTO;
 
 abstract class AbstractFileGenerator
 {
