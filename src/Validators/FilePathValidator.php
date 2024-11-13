@@ -40,7 +40,7 @@ class FilePathValidator
 
         $expectedExtension = $expectedFileType->extension();
         if ($expectedExtension !== $extension) {
-            throw new ValueError('Unexpected file extension. Expected '. $expectedExtension);
+            throw new ValueError("Unexpected file extension. Expected $expectedExtension, $extension given");
         }
     }
 }
