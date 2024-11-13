@@ -24,6 +24,6 @@ readonly class SitemapItemDTO
     public static function fromPage(array $page): self
     {
         $priority = round($page['priority'], 1);
-        return new self($page['loc'], $page['lastmod'], $priority, $page['changefreq']);
+        return new self($page['loc'], $page['lastmod'], number_format($priority), $page['changefreq']);
     }
 }
